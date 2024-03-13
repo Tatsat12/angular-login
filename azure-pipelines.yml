@@ -24,3 +24,9 @@ steps:
     targetPath: '$(Build.SourcesDirectory)/dist'
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
+
+- task: IISWebAppDeploymentOnMachineGroup@0
+  inputs:
+    WebSiteName: 'AngularLogin'
+    VirtualApplication: 'http://172.16.0.245:145/AngularLogin'
+    Package: '$(Build.SourcesDirectory)/dist'
