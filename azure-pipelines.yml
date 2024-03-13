@@ -25,7 +25,11 @@ steps:
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
 
-- script: |
-    # Example script to deploy using msdeploy command
-    mono $(MSDeploy_Home) -verb:sync -source:package='$(Build.SourcesDirectory)/dist' -dest:auto,ComputerName='https://172.16.0.245:145/MSDeployAgentService',UserName='admin',Password='Admin@123',AuthType='Basic' -setParam:name='AngularLogin',value='AngularLogin' -allowUntrusted
-  displayName: 'Deploy to IIS'
+- task: IISWebAppManagementOnMachineGroup@0
+  inputs:
+    EnableIIS: true
+    IISDeploymentType: 'IISWebsite'
+    ActionIISWebsite: 'CreateOrUpdateWebsite'
+    WebsiteName: 'AngularLogin'
+    WebsitePhysicalPath: '$(Build.SourcesDirectory)/dist'
+    WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
