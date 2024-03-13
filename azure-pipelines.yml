@@ -27,5 +27,5 @@ steps:
 
 - script: |
     # Example script to deploy using msdeploy command
-    mono $(MSDeploy_HOME) -verb:sync -source:package='$(Build.SourcesDirectory)/dist' -dest:auto,ComputerName='https://172.16.0.245:145/MSDeployAgentService',UserName='admin',Password='Admin@123',AuthType='Basic' -setParam:name='AngularLogin',value='AngularLogin' -allowUntrusted
+    mono $(MSDeploy_Home) -verb:sync -source:package='$(Build.SourcesDirectory)/dist' -dest:auto,ComputerName='https://172.16.0.245:145/MSDeployAgentService',UserName='admin',Password='Admin@123',AuthType='Basic' -setParam:name='AngularLogin',value='AngularLogin' -allowUntrusted
   displayName: 'Deploy to IIS'
