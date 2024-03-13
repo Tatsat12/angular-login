@@ -24,12 +24,3 @@ steps:
     targetPath: '$(Build.SourcesDirectory)/dist'
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
-
-- task: IISWebAppManagementOnMachineGroup@0
-  inputs:
-    EnableIIS: true
-    IISDeploymentType: 'IISWebsite'
-    ActionIISWebsite: 'CreateOrUpdateWebsite'
-    WebsiteName: 'AngularLogin'
-    WebsitePhysicalPath: '$(Build.SourcesDirectory)/dist'
-    WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
