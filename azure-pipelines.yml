@@ -25,6 +25,10 @@ steps:
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
 
+- script: |
+    ls $(Build.SourcesDirectory)/dist
+  displayName: 'List Published Artifact'
+
 - task: DownloadPipelineArtifact@2
   displayName: 'Download Artifact'
   inputs:
