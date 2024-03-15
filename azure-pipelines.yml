@@ -39,7 +39,7 @@ steps:
     destinationFolder: '$(Build.SourcesDirectory)/DistUnZip'
 
 - script: |
-    ls $(Build.SourcesDirectory)/DistUnZip/angular-login
+    ls $(Build.SourcesDirectory)/DistUnZip
   displayName: 'List File Content TEST'
 
 - task: IISWebAppManagementOnMachineGroup@0
