@@ -35,11 +35,11 @@ steps:
 - task: ExtractFiles@1
   displayName: 'Extract Artifact'
   inputs:
-    archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/angular-login.zip'
+    archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/*.zip'
     destinationFolder: '$(Build.SourcesDirectory)/DistUnZip'
 
 - script: |
-    ls $(Build.SourcesDirectory)/DistZipDownload
+    ls $(Build.SourcesDirectory)/DistZipDownload/angular-login
   displayName: 'List File Content TEST'
 
 - task: IISWebAppManagementOnMachineGroup@0
