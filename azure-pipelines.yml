@@ -24,3 +24,17 @@ steps:
     targetPath: '$(Build.SourcesDirectory)/dist'
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
+
+- task: IISWebAppDeploymentOnMachineGroup@0
+  displayName: 'Deploy to IIS'
+  inputs:
+    WebSiteName: 'AngularLogin'
+    TakeAppOfflineFlag: true
+    XmlTransformation: true
+    JSONFiles: '**/appsettings.json'
+    XmlVariableSubstitution: true
+    RemoteIISAppPhysicalPath: '$(Build.SourcesDirectory)/dist'
+    RemoveAdditionalFilesFlag: true
+    ExcludeFilesFromAppDataFlag: true
+    TakeAppOfflineOnUpgrade: true
+    RenameFilesFlag: true
