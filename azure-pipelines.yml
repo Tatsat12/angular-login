@@ -26,20 +26,8 @@ steps:
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
 
-- task: DownloadPipelineArtifact@2
-  displayName: 'Download Artifact'
-  inputs:
-    artifactName: AngularLogin
-    targetPath: '$(Build.SourcesDirectory)/DistZipDownload'
-
-- task: ExtractFiles@1
-  displayName: 'Extract Artifact'
-  inputs:
-    archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/*.zip'
-    destinationFolder: '$(Build.SourcesDirectory)/DistUnZip'
-
 - script: |
-    ls $(Build.SourcesDirectory)/DistUnZip
+    ls $(Build.SourcesDirectory)/dist
   displayName: 'List File Content TEST'
 
 - task: IISWebAppManagementOnMachineGroup@0
@@ -53,4 +41,4 @@ steps:
 - task: IISWebAppDeploymentOnMachineGroup@0
   inputs:
     WebSiteName: 'AngularLogin'
-    Package: '$(Build.SourcesDirectory)/DistUnZip'
+    Package: '$(Build.SourcesDirectory)/dist'
