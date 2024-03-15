@@ -30,10 +30,6 @@ steps:
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
 
-- script: |
-    ls $(Build.SourcesDirectory)/dist
-  displayName: 'List Published Artifact'
-
 - task: DownloadPipelineArtifact@2
   displayName: 'Download Artifact'
   inputs:
@@ -45,10 +41,6 @@ steps:
   inputs:
     archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/*.zip'
     destinationFolder: '$(Build.SourcesDirectory)/DistUnZip'
-
-- script: |
-    ls $(Build.SourcesDirectory)/DistUnZip/angular-login
-  displayName: 'List Downloaded Artifact'
 
 - task: IISWebAppManagementOnMachineGroup@0
   inputs:
