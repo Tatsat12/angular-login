@@ -33,10 +33,16 @@ steps:
   displayName: 'Download Artifact'
   inputs:
     artifactName: AngularLogin
-    targetPath: '$(Build.SourcesDirectory)/DistDownload'
+    targetPath: '$(Build.SourcesDirectory)/DistZipDownload'
+
+- task: ExtractFiles@1
+  displayName: 'Extract Artifact'
+  inputs:
+    archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/*.zip'
+    destinationFolder: '$(Build.SourcesDirectory)/DistUnZip'
 
 - script: |
-    ls $(Build.SourcesDirectory)/DistDownload/angular-login
+    ls $(Build.SourcesDirectory)/DistUnZip/angular-login
   displayName: 'List Downloaded Artifact'
 
 - task: IISWebAppDeploymentOnMachineGroup@0
@@ -46,6 +52,6 @@ steps:
     TakeAppOfflineFlag: true
     XmlTransformation: true
     XmlVariableSubstitution: true
-    RemoteIISAppPhysicalPath: '$(Build.SourcesDirectory)/DistDownload/angular-login'
+    RemoteIISAppPhysicalPath: '$(Build.SourcesDirectory)/DistUnZip/angular-login'
     TakeAppOfflineOnUpgrade: true
     RenameFilesFlag: true
