@@ -35,7 +35,7 @@ steps:
 - task: ExtractFiles@1
   displayName: 'Extract Artifact'
   inputs:
-    archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/*.zip'
+    archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/angular-login.zip'
     destinationFolder: '$(Build.SourcesDirectory)/DistUnZip'
 
 - script: |
