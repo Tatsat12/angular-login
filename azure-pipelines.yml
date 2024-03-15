@@ -51,4 +51,4 @@ steps:
     WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
     WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
     AddBinding: true
-    BindingInformation: 'http/*:90:'
+    BindingInformation: 'http//*:90:'
