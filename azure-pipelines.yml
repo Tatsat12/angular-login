@@ -1,44 +1,27 @@
 trigger:
-- main
-
+- master
+ 
 pool:
   vmImage: 'windows-latest'
-
+ 
 steps:
-
+ 
 - task: UseNode@1
   displayName: 'Install Node.js'
   inputs:
     version: '16.x'
-
+ 
 - script: |
     npm install
   displayName: 'NpmInstall'
-
+ 
 - script: |
     npm run build
   displayName: 'NpmBuild'
-
+ 
 - task: PublishPipelineArtifact@1
   inputs:
     artifactName: AngularLogin
     targetPath: '$(Build.SourcesDirectory)/dist'
     publishLocation: 'pipeline'
   displayName: 'PublishNpmArtifact'
-
-- script: |
-    ls $(Build.SourcesDirectory)/dist
-  displayName: 'List File Content TEST'
-
-- task: IISWebAppManagementOnMachineGroup@0
-  inputs:
-    IISDeploymentType: 'IISWebsite'
-    ActionIISWebsite: 'CreateOrUpdateWebsite'
-    WebsiteName: 'AngularLogin'
-    WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
-    WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
-
-- task: IISWebAppDeploymentOnMachineGroup@0
-  inputs:
-    WebSiteName: 'AngularLogin'
-    Package: '$(Build.SourcesDirectory)/dist'
