@@ -49,3 +49,8 @@ steps:
     WebsiteName: 'AngularLogin'
     WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
     WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
+
+- task: IISWebAppDeploymentOnMachineGroup@0
+  inputs:
+    WebSiteName: 'AngularLogin'
+    Package: '$(Build.SourcesDirectory)/DistUnZip'
