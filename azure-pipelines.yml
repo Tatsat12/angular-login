@@ -6,10 +6,6 @@ pool:
 
 steps:
 
-- script: |
-    ls $(Build.SourcesDirectory)
-  displayName: 'List File Content TEST'
-
 - task: UseNode@1
   displayName: 'Install Node.js'
   inputs:
@@ -22,6 +18,10 @@ steps:
 - script: |
     npm run build
   displayName: 'NpmBuild'
+
+- script: |
+    ls $(Build.SourcesDirectory)
+  displayName: 'List File Content TEST'
 
 - task: PublishPipelineArtifact@1
   inputs:
@@ -50,13 +50,12 @@ steps:
     ls $(Build.SourcesDirectory)/DistUnZip/angular-login
   displayName: 'List Downloaded Artifact'
 
-- task: IISWebAppDeploymentOnMachineGroup@0
-  displayName: 'Deploy to IIS'
+- task: IISWebAppManagementOnMachineGroup@0
   inputs:
-    WebSiteName: 'AngularLogin'
-    TakeAppOfflineFlag: true
-    XmlTransformation: true
-    XmlVariableSubstitution: true
-    RemoteIISAppPhysicalPath: '$(Build.SourcesDirectory)/DistUnZip/angular-login'
-    TakeAppOfflineOnUpgrade: true
-    RenameFilesFlag: true
+    EnableIIS: true
+    IISDeploymentType: 'IISWebsite'
+    ActionIISWebsite: 'CreateOrUpdateWebsite'
+    WebsiteName: 'AngularLogin'
+    WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
+    WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
+    AddBinding: true
