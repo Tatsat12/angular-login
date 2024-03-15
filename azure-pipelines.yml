@@ -5,6 +5,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- script: |
+    ls $(Build.SourcesDirectory)
+  displayName: 'List File Content TEST'
+
 - task: UseNode@1
   displayName: 'Install Node.js'
   inputs:
