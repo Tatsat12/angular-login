@@ -44,11 +44,11 @@ steps:
 
 - task: IISWebAppManagementOnMachineGroup@0
   inputs:
-    EnableIIS: true
+    EnableIIS: false
     IISDeploymentType: 'IISWebsite'
     ActionIISWebsite: 'CreateOrUpdateWebsite'
     WebsiteName: 'AngularLogin'
     WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
     WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
     AddBinding: true
-    BindingInformation: 'http//*:90:'
+    BindingInformation: 'http/*:8080:'
