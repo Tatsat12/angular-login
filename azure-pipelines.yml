@@ -19,10 +19,6 @@ steps:
     npm run build
   displayName: 'NpmBuild'
 
-- script: |
-    ls $(Build.SourcesDirectory)
-  displayName: 'List File Content TEST'
-
 - task: PublishPipelineArtifact@1
   inputs:
     artifactName: AngularLogin
@@ -41,6 +37,10 @@ steps:
   inputs:
     archiveFilePatterns: '$(Build.SourcesDirectory)/DistZipDownload/*.zip'
     destinationFolder: '$(Build.SourcesDirectory)/DistUnZip'
+
+- script: |
+    ls $(Build.SourcesDirectory)/DistZipDownload
+  displayName: 'List File Content TEST'
 
 - task: IISWebAppManagementOnMachineGroup@0
   inputs:
