@@ -31,6 +31,10 @@ steps:
     artifactName: AngularLogin
     targetPath: '$(System.DefaultWorkingDirectory)/downloadedArtifact'
 
+- script: |
+    ls $(System.DefaultWorkingDirectory)/downloadedArtifact
+  displayName: 'List Downloaded Artifact'
+
 - task: IISWebAppDeploymentOnMachineGroup@0
   displayName: 'Deploy to IIS'
   inputs:
