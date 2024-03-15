@@ -31,10 +31,7 @@ steps:
     WebSiteName: 'AngularLogin'
     TakeAppOfflineFlag: true
     XmlTransformation: true
-    JSONFiles: '**/appsettings.json'
     XmlVariableSubstitution: true
     RemoteIISAppPhysicalPath: '$(Build.SourcesDirectory)/dist'
-    RemoveAdditionalFilesFlag: true
-    ExcludeFilesFromAppDataFlag: true
     TakeAppOfflineOnUpgrade: true
     RenameFilesFlag: true
